@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+{% if searchTitle == True %}
+  <br><br>
+  <h2>{{movieData.Title}} </h2>
+  <br>
+  <img src="{{movieData.Poster}}">
+  <br>
+  <br>
+  <p> Date of release: {{movieData.Year}} </p>
+  <p> Ratings: {{movieData.Rating}}</p>
+  <p> Genres: {% for value in movieData.Genre %}{{ value }}{{' '}}{% endfor %} </p>
+  <br>
+  <h4>{{movieData.Plot}}</h4>
+{% endif %}
+
+{% endblock %}

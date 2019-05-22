@@ -1,0 +1,12 @@
+{% extends "home.html" %}
+
+{% block content %}
+{% if searchGenre == True %}
+  <br><br>
+  <h3>Number of movies: {{genreData.Total_Results}}</h3>
+  <h3>Total pages of data: {{genreData.Total_Pages}}</h3>
+  <p>{% for entry in genreData.Items %} <a href='/title/?t={{entry.Title}}' >{{entry.Title|linebreaks}}</a>{% endfor %}</p>
+{% endif %}
+
+
+{% endblock %}

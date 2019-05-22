@@ -1,0 +1,45 @@
+{% extends "home.html" %}
+
+{% block content %}
+{% if searchYear == True %}
+  <br><br>
+  <h3>Number of movies: {{yearData.Total_Results}}</h3>
+  <h3>Total pages of data: {{yearData.Total_Pages}}</h3>
+  <p>{% for entry in yearData.Items %}<a href='/title/?t={{entry.Title}}' >{{entry.Title|linebreaks}}</a>{% endfor %}</p>
+  {% if yearData.Total_Pages != 1 %}
+    <nav aria-label="Page navigation">
+    <ul class="pagination">
+        {% if index > 1 %}
+        <li><a href="/year/?y={{Year}}&p={{index|add:'-1'}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span></a></li>
+        {% else %}
+        <li><a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span></a></li>
+        {% endif %}
+        {%if index > 2 %}
+        <li><a href='/year/?y={{Year}}&p={{index|add:"-2"}}'>{{index|add:"-2"}}</a></li>
+        {% endif %}
+        {% if index > 1 %}
+        <li><a href='/year/?y={{Year}}&p={{index|add:"-1"}}'>{{index|add:"-1"}}</a></li>
+        {% endif %}
+        <li><a href='/year/?y={{Year}}&p={{index}}'>{{index}}</a></li>
+        {% if index < count|add:"-1" %}
+        <li><a href='/year/?y={{Year}}&p={{index|add:"1"}}'>{{index|add:"1"}}</a></li>
+        {% endif %}
+        {% if index < count|add:"-2" %}
+        <li><a href='/year/?y={{Year}}&p={{index|add:"2"}}'>{{index|add:"2"}}</a></li>
+        {% endif %}
+        {% if index < count %}
+        <li><a href="/year/?y={{Year}}&p={{index|add:'1'}}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span></a></li>
+        {% else %}
+            <li><a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span></a></li>
+        {% endif %}
+
+    </ul>
+    </nav>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

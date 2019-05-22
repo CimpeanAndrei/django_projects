@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+
+{% block content %}
+{% if searchKeyword == True %}
+  <br><br>
+  <h3>Number of movies: {{keywordData.Total_Results}}</h3>
+  <h3>Total pages of data: {{keywordData.Total_Pages}}</h3>
+  {% for entry in keywordData.Items %}
+  <br>
+  <h2>{{entry.Title}}</h2>
+  <img src="{{entry.Poster}}">
+  <br>
+  <p>   Date of release: {{entry.Year}}</p>
+  <p>   Ratings: {{entry.Rating}}</p>
+  <p>   Genres: {% for value in entry.Genre %}{{ value }}{{' '}}{% endfor %} </p>
+  <br>
+  <h5>Summary:
+  <h4>{{entry.Plot}}</h4>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}

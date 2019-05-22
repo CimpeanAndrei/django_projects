@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Movie Search</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//bootswatch.com/superhero/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Search your favorite movie</h1>
+        <div class="col-sm-6">
+            <form method="GET" action="/title">
+                <p>Search by title</p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="t">
+                </div>
+                <input type="submit" class="btn btn-default">
+                <br><br>
+            </form>
+            <br><br>
+            <form method="GET" action="/year">
+                <p>Search by year</p>
+                <div class="form-group">
+                    <input class="form-control" type="number" min="1919" max="2019" name="y">
+                    <input class="form-control" type="number" name="p" placeholder="page 1">
+                </div>
+                <input type="submit" class="btn btn-default">
+            </form>
+            <br><br>
+        </div>
+        <div class="col-sm-6">
+            <form method="GET" action="/keyword">
+                <p>Search by keyword</p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="k">
+                    <input class="form-control" type="number" name="p" placeholder="page 1">
+                </div>
+                <input type="submit" class="btn btn-default">
+            </form>
+            <br><br>
+            <form method="GET" action="/genre">
+                <p>Search by genre</p>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="g">
+                    <input class="form-control" type="number" name="p" placeholder="page 1">
+                </div>
+                <input type="submit" class="btn btn-default">
+            </form>
+            <br><br>
+        </div>
+    </div class="container">
+    <div class="w3-container w3-center">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
